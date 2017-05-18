@@ -5,7 +5,7 @@ import java.util.List;
 
 public class LevelUpController {
 
-	private static LevelUpOption[] options = new LevelUpOption[] {
+	private static final LevelUpOption[] options = new LevelUpOption[] {
 			new LevelUpOption("Increased hit points") {
 				public void invoke(CreatureInterface creature) {
 					creature.modifyMaxHp(10);

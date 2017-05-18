@@ -1,7 +1,9 @@
 package game;
 
+//Class FieldOfView
+
 public class FieldOfView {
-	private World world;
+	private final World world;
 	private int depth;
 	
 	private boolean[][] visible;
@@ -9,7 +11,7 @@ public class FieldOfView {
 		return z == depth && x >= 0 && y >= 0 && x < visible.length && y < visible[0].length && visible[x][y];
 	}
 	
-	private Tile[][][] tiles;
+	private final Tile[][][] tiles;
 	public Tile tile(int x, int y, int z){
 		return tiles[x][y][z];
 	}
@@ -34,9 +36,9 @@ public class FieldOfView {
 		
 		for (int x = -r; x < r; x++){
 			for (int y = -r; y < r; y++){
-				if (x*x + y*y > r*r)
+				if (x*x + y*y > r*r) {
 					continue;
-				
+				}
 				if (wx + x < 0 || wx + x >= world.width() || wy + y < 0 || wy + y >= world.height())
 					continue;
 				
@@ -45,8 +47,9 @@ public class FieldOfView {
 					visible[p.x][p.y] = true;
 					tiles[p.x][p.y][wz] = tile; 
 					
-					if (!tile.isGround())
-						break;
+					if (!tile.isGround()) {
+						break;		
+					}
 				}
 			}
 		}
