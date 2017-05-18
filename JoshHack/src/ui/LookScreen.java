@@ -1,6 +1,7 @@
 package ui;
 
 import game.Creature;
+import game.CreatureInterface;
 import game.Item;
 import game.Tile;
 
@@ -11,7 +12,7 @@ public class LookScreen extends TargetBasedScreen {
 	}
 
 	public void enterWorldCoordinate(int x, int y, int screenX, int screenY) {
-		Creature creature = player.creature(x, y, player.z);
+		CreatureInterface creature = player.creature(x, y, player.z);
 		if (creature != null){
 			caption = creature.glyph() + " "  + creature.name() + creature.details();
 			return;

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Creature {
+public class Creature implements CreatureInterface {
 	private World world;
 	
 	public int x;
@@ -13,23 +13,55 @@ public class Creature {
 	public int z;
 	
 	private char glyph;
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#glyph()
+	 */
+	@Override
 	public char glyph() { return glyph; }
 	
 	private Color color;
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#color()
+	 */
+	@Override
 	public Color color() { return color; }
 
 	private CreatureAi ai;
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#setCreatureAi(game.CreatureAi)
+	 */
+	@Override
 	public void setCreatureAi(CreatureAi ai) { this.ai = ai; }
 	
 	private int maxHp;
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#maxHp()
+	 */
+	@Override
 	public int maxHp() { return maxHp; }
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#modifyMaxHp(int)
+	 */
+	@Override
 	public void modifyMaxHp(int amount) { maxHp += amount; }
 	
 	private int hp;
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#hp()
+	 */
+	@Override
 	public int hp() { return hp; }
 	
 	private int attackValue;
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#modifyAttackValue(int)
+	 */
+	@Override
 	public void modifyAttackValue(int value) { attackValue += value; }
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#attackValue()
+	 */
+	@Override
 	public int attackValue() { 
 		return attackValue
 			+ (weapon == null ? 0 : weapon.attackValue())
@@ -37,7 +69,15 @@ public class Creature {
 	}
 
 	private int defenseValue;
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#modifyDefenseValue(int)
+	 */
+	@Override
 	public void modifyDefenseValue(int value) { defenseValue += value; }
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#defenseValue()
+	 */
+	@Override
 	public int defenseValue() { 
 		return defenseValue
 			+ (weapon == null ? 0 : weapon.defenseValue())
@@ -45,29 +85,69 @@ public class Creature {
 	}
 
 	private int visionRadius;
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#modifyVisionRadius(int)
+	 */
+	@Override
 	public void modifyVisionRadius(int value) { visionRadius += value; }
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#visionRadius()
+	 */
+	@Override
 	public int visionRadius() { return visionRadius; }
 
 	private String name;
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#name()
+	 */
+	@Override
 	public String name() { return name; }
 
 	private Inventory inventory;
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#inventory()
+	 */
+	@Override
 	public Inventory inventory() { return inventory; }
 
 	private int maxFood;
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#maxFood()
+	 */
+	@Override
 	public int maxFood() { return maxFood; }
 	
 	private int food;
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#food()
+	 */
+	@Override
 	public int food() { return food; }
 	
 	private Item weapon;
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#weapon()
+	 */
+	@Override
 	public Item weapon() { return weapon; }
 	
 	private Item armor;
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#armor()
+	 */
+	@Override
 	public Item armor() { return armor; }
 	
 	private int xp;
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#xp()
+	 */
+	@Override
 	public int xp() { return xp; }
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#modifyXp(int)
+	 */
+	@Override
 	public void modifyXp(int amount) { 
 		xp += amount;
 		
@@ -82,28 +162,64 @@ public class Creature {
 	}
 	
 	private int level;
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#level()
+	 */
+	@Override
 	public int level() { return level; }
 	
 	private int regenHpCooldown;
 	private int regenHpPer1000;
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#modifyRegenHpPer1000(int)
+	 */
+	@Override
 	public void modifyRegenHpPer1000(int amount) { regenHpPer1000 += amount; }
 	
 	private List<Effect> effects;
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#effects()
+	 */
+	@Override
 	public List<Effect> effects(){ return effects; }
 	
 	private int maxMana;
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#maxMana()
+	 */
+	@Override
 	public int maxMana() { return maxMana; }
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#modifyMaxMana(int)
+	 */
+	@Override
 	public void modifyMaxMana(int amount) { maxMana += amount; }
 	
 	private int mana;
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#mana()
+	 */
+	@Override
 	public int mana() { return mana; }
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#modifyMana(int)
+	 */
+	@Override
 	public void modifyMana(int amount) { mana = Math.max(0, Math.min(mana+amount, maxMana)); }
 	
 	private int regenManaCooldown;
 	private int regenManaPer1000;
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#modifyRegenManaPer1000(int)
+	 */
+	@Override
 	public void modifyRegenManaPer1000(int amount) { regenManaPer1000 += amount; }
 	
 	private String causeOfDeath;
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#causeOfDeath()
+	 */
+	@Override
 	public String causeOfDeath() { return causeOfDeath; }
 	
 	public Creature(World world, char glyph, Color color, String name, int maxHp, int attack, int defense){
@@ -127,6 +243,10 @@ public class Creature {
 		this.regenManaPer1000 = 20;
 	}
 	
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#moveBy(int, int, int)
+	 */
+	@Override
 	public void moveBy(int mx, int my, int mz){
 		if (mx==0 && my==0 && mz==0)
 			return;
@@ -159,6 +279,10 @@ public class Creature {
 			meleeAttack(other);
 	}
 
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#meleeAttack(game.Creature)
+	 */
+	@Override
 	public void meleeAttack(Creature other){
 		commonAttack(other, attackValue(), "attack the %s for %d damage", other.name);
 	}
@@ -168,6 +292,10 @@ public class Creature {
 		other.addEffect(item.quaffEffect());
 	}
 	
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#rangedWeaponAttack(game.Creature)
+	 */
+	@Override
 	public void rangedWeaponAttack(Creature other){
 		commonAttack(other, attackValue / 2 + weapon.rangedAttackValue(), "fire a %s at the %s for %d damage", nameOf(weapon), other.name);
 	}
@@ -193,6 +321,10 @@ public class Creature {
 			gainXp(other);
 	}
 	
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#gainXp(game.Creature)
+	 */
+	@Override
 	public void gainXp(Creature other){
 		int amount = other.maxHp 
 			+ other.attackValue() 
@@ -203,6 +335,10 @@ public class Creature {
 			modifyXp(amount);
 	}
 
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#modifyHp(int, java.lang.String)
+	 */
+	@Override
 	public void modifyHp(int amount, String causeOfDeath) { 
 		hp += amount;
 		this.causeOfDeath = causeOfDeath;
@@ -226,12 +362,20 @@ public class Creature {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#dig(int, int, int)
+	 */
+	@Override
 	public void dig(int wx, int wy, int wz) {
 		modifyFood(-10);
 		world.dig(wx, wy, wz);
 		doAction("dig");
 	}
 	
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#update()
+	 */
+	@Override
 	public void update(){
 		modifyFood(-1);
 		regenerateHealth();
@@ -276,16 +420,28 @@ public class Creature {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#canEnter(int, int, int)
+	 */
+	@Override
 	public boolean canEnter(int wx, int wy, int wz) {
 		return world.tile(wx, wy, wz).isGround() && world.creature(wx, wy, wz) == null;
 	}
 
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#notify(java.lang.String, java.lang.Object)
+	 */
+	@Override
 	public void notify(String message, Object ... params){
 		ai.onNotify(String.format(message, params));
 	}
 	
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#doAction(java.lang.String, java.lang.Object)
+	 */
+	@Override
 	public void doAction(String message, Object ... params){
-		for (Creature other : getCreaturesWhoSeeMe()){
+		for (CreatureInterface other : getCreaturesWhoSeeMe()){
 			if (other == this){
 				other.notify("You " + message + ".", params);
 			} else {
@@ -294,11 +450,15 @@ public class Creature {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#doAction(game.Item, java.lang.String, java.lang.Object)
+	 */
+	@Override
 	public void doAction(Item item, String message, Object ... params){
 		if (hp < 1)
 			return;
 		
-		for (Creature other : getCreaturesWhoSeeMe()){
+		for (CreatureInterface other : getCreaturesWhoSeeMe()){
 			if (other == this){
 				other.notify("You " + message + ".", params);
 			} else {
@@ -340,15 +500,27 @@ public class Creature {
 		return builder.toString().trim();
 	}
 	
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#canSee(int, int, int)
+	 */
+	@Override
 	public boolean canSee(int wx, int wy, int wz){
 		return (detectCreatures > 0 && world.creature(wx, wy, wz) != null
 				|| ai.canSee(wx, wy, wz));
 	}
 
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#realTile(int, int, int)
+	 */
+	@Override
 	public Tile realTile(int wx, int wy, int wz) {
 		return world.tile(wx, wy, wz);
 	}
 	
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#tile(int, int, int)
+	 */
+	@Override
 	public Tile tile(int wx, int wy, int wz) {
 		if (canSee(wx, wy, wz))
 			return world.tile(wx, wy, wz);
@@ -356,6 +528,10 @@ public class Creature {
 			return ai.rememberedTile(wx, wy, wz);
 	}
 
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#creature(int, int, int)
+	 */
+	@Override
 	public Creature creature(int wx, int wy, int wz) {
 		if (canSee(wx, wy, wz))
 			return world.creature(wx, wy, wz);
@@ -363,6 +539,10 @@ public class Creature {
 			return null;
 	}
 	
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#pickup()
+	 */
+	@Override
 	public void pickup(){
 		Item item = world.item(x, y, z);
 		
@@ -375,6 +555,10 @@ public class Creature {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#drop(game.Item)
+	 */
+	@Override
 	public void drop(Item item){
 		if (world.addAtEmptySpace(item, x, y, z)){
 			doAction("drop a " + nameOf(item));
@@ -385,6 +569,10 @@ public class Creature {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#modifyFood(int)
+	 */
+	@Override
 	public void modifyFood(int amount) { 
 		food += amount;
 		
@@ -398,15 +586,27 @@ public class Creature {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#isPlayer()
+	 */
+	@Override
 	public boolean isPlayer(){
 		return glyph == '@';
 	}
 	
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#eat(game.Item)
+	 */
+	@Override
 	public void eat(Item item){
 		doAction("eat a " + nameOf(item));
 		consume(item);
 	}
 	
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#quaff(game.Item)
+	 */
+	@Override
 	public void quaff(Item item){
 		doAction("quaff a " + nameOf(item));
 		consume(item);
@@ -441,6 +641,10 @@ public class Creature {
 		world.addAtEmptySpace(item, wx, wy, wz);
 	}
 	
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#unequip(game.Item)
+	 */
+	@Override
 	public void unequip(Item item){
 		if (item == null)
 			return;
@@ -456,6 +660,10 @@ public class Creature {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#equip(game.Item)
+	 */
+	@Override
 	public void equip(Item item){
 		if (!inventory.contains(item)) {
 			if (inventory.isFull()) {
@@ -481,6 +689,10 @@ public class Creature {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#item(int, int, int)
+	 */
+	@Override
 	public Item item(int wx, int wy, int wz) {
 		if (canSee(wx, wy, wz))
 			return world.item(wx, wy, wz);
@@ -488,10 +700,18 @@ public class Creature {
 			return null;
 	}
 	
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#details()
+	 */
+	@Override
 	public String details() {
 		return String.format("  level:%d  attack:%d  defense:%d  hp:%d", level, attackValue(), defenseValue(), hp);
 	}
 	
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#throwItem(game.Item, int, int, int)
+	 */
+	@Override
 	public void throwItem(Item item, int wx, int wy, int wz) {
 		Point end = new Point(x, y, 0);
 		
@@ -517,13 +737,25 @@ public class Creature {
 			putAt(item, wx, wy, wz);
 	}
 	
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#summon(game.Creature)
+	 */
+	@Override
 	public void summon(Creature other) {
 		world.add(other);
 	}
 	
 	private int detectCreatures;
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#modifyDetectCreatures(int)
+	 */
+	@Override
 	public void modifyDetectCreatures(int amount) { detectCreatures += amount; }
 	
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#castSpell(game.Spell, int, int)
+	 */
+	@Override
 	public void castSpell(Spell spell, int x2, int y2) {
 		Creature other = creature(x2, y2, z);
 		
@@ -539,10 +771,18 @@ public class Creature {
 		modifyMana(-spell.manaCost());
 	}
 	
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#nameOf(game.Item)
+	 */
+	@Override
 	public String nameOf(Item item){
 		return ai.getName(item);
 	}
 	
+	/* (non-Javadoc)
+	 * @see game.CreatureInterface#learnName(game.Item)
+	 */
+	@Override
 	public void learnName(Item item){
 		notify("The " + item.appearance() + " is a " + item.name() + "!");
 		ai.setName(item, item.name());

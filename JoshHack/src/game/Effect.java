@@ -13,7 +13,7 @@ public class Effect {
 		this.duration = other.duration; 
 	}
 	
-	public void update(Creature creature){
+	public void update(CreatureInterface creature){
 		duration--;
 	}
 	
@@ -21,7 +21,7 @@ public class Effect {
 		
 	}
 	
-	public void end(Creature creature){
+	public void end(CreatureInterface creature){
 		
 	}
 }

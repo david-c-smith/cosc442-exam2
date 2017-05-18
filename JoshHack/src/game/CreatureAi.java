@@ -61,7 +61,7 @@ public class CreatureAi {
 		int mx = (int)(Math.random() * 3) - 1;
 		int my = (int)(Math.random() * 3) - 1;
 		
-		Creature other = creature.creature(creature.x + mx, creature.y + my, creature.z);
+		CreatureInterface other = creature.creature(creature.x + mx, creature.y + my, creature.z);
 		
 		if (other != null && other.name().equals(creature.name()) 
 				|| !creature.tile(creature.x+mx, creature.y+my, creature.z).isGround())

@@ -58,14 +58,14 @@ public class StuffFactory {
 		return bat;
 	}
 	
-	public Creature newZombie(int depth, Creature player){
+	public CreatureInterface newZombie(int depth, Creature player){
 		Creature zombie = new Creature(world, 'z', AsciiPanel.white, "zombie", 50, 10, 10);
 		world.addAtEmptyLocation(zombie, depth);
 		new ZombieAi(zombie, player);
 		return zombie;
 	}
 
-	public Creature newGoblin(int depth, Creature player){
+	public CreatureInterface newGoblin(int depth, Creature player){
 		Creature goblin = new Creature(world, 'g', AsciiPanel.brightGreen, "goblin", 66, 15, 5);
 		new GoblinAi(goblin, player);
 		goblin.equip(randomWeapon(depth));
@@ -222,7 +222,7 @@ public class StuffFactory {
 				creature.doAction(item, "look a little better");
 			}
 			
-			public void update(Creature creature){
+			public void update(CreatureInterface creature){
 				super.update(creature);
 				creature.modifyHp(1, "Killed by a slow health potion?");
 			}
@@ -240,7 +240,7 @@ public class StuffFactory {
 				creature.doAction(item, "look sick");
 			}
 			
-			public void update(Creature creature){
+			public void update(CreatureInterface creature){
 				super.update(creature);
 				creature.modifyHp(-1, "Died of poison.");
 			}
@@ -259,7 +259,7 @@ public class StuffFactory {
 				creature.modifyDefenseValue(5);
 				creature.doAction(item, "look stronger");
 			}
-			public void end(Creature creature){
+			public void end(CreatureInterface creature){
 				creature.modifyAttackValue(-5);
 				creature.modifyDefenseValue(-5);
 				creature.doAction("look less strong");
@@ -278,7 +278,7 @@ public class StuffFactory {
 				creature.modifyVisionRadius(3);
 				creature.doAction(item, "look more alert");
 			}
-			public void end(Creature creature){
+			public void end(CreatureInterface creature){
 				creature.modifyVisionRadius(-3);
 				creature.doAction("look less alert");
 			}
@@ -339,7 +339,7 @@ public class StuffFactory {
 		});
 		
 		item.addWrittenSpell("slow heal", 12, new Effect(50){
-			public void update(Creature creature){
+			public void update(CreatureInterface creature){
 				super.update(creature);
 				creature.modifyHp(2, "Killed by a slow heal spell?");
 			}
@@ -354,12 +354,12 @@ public class StuffFactory {
 				creature.modifyRegenManaPer1000(-10);
 				creature.doAction("seem to glow with inner strength");
 			}
-			public void update(Creature creature){
+			public void update(CreatureInterface creature){
 				super.update(creature);
 				if (Math.random() < 0.25)
 					creature.modifyHp(1, "Killed by inner strength spell?");
 			}
-			public void end(Creature creature){
+			public void end(CreatureInterface creature){
 				creature.modifyAttackValue(-2);
 				creature.modifyDefenseValue(-2);
 				creature.modifyVisionRadius(-1);
@@ -436,7 +436,7 @@ public class StuffFactory {
 				creature.doAction("look far off into the distance");
 				creature.modifyDetectCreatures(1);
 			}
-			public void end(Creature creature){
+			public void end(CreatureInterface creature){
 				creature.modifyDetectCreatures(-1);
 			}
 		});

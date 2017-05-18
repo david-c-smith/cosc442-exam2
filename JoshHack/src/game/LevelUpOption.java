@@ -8,5 +8,5 @@ public abstract class LevelUpOption {
 		this.name = name;
 	}
 	
-	public abstract void invoke(Creature creature);
+	public abstract void invoke(CreatureInterface creature);
 }

@@ -4,15 +4,15 @@ import java.awt.event.KeyEvent;
 import java.util.List;
 
 import asciiPanel.AsciiPanel;
-import game.Creature;
+import game.CreatureInterface;
 import game.LevelUpController;
 
 public class LevelUpScreen implements Screen {
 	private LevelUpController controller;
-	private Creature player;
+	private CreatureInterface player;
 	private int picks;
 	
-	public LevelUpScreen(Creature player, int picks){
+	public LevelUpScreen(CreatureInterface player, int picks){
 		this.controller = new LevelUpController();
 		this.player = player;
 		this.picks = picks;

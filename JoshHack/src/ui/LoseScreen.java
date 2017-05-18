@@ -3,12 +3,12 @@ package ui;
 import java.awt.event.KeyEvent;
 
 import asciiPanel.AsciiPanel;
-import game.Creature;
+import game.CreatureInterface;
 
 public class LoseScreen implements Screen {
-	private Creature player;
+	private CreatureInterface player;
 	
-	public LoseScreen(Creature player){
+	public LoseScreen(CreatureInterface player){
 		this.player = player;
 	}
 	

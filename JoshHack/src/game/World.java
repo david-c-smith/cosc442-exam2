@@ -44,7 +44,7 @@ public class World {
 	}
 	
 	public char glyph(int x, int y, int z){
-		Creature creature = creature(x, y, z);
+		CreatureInterface creature = creature(x, y, z);
 		if (creature != null)
 			return creature.glyph();
 		
@@ -55,7 +55,7 @@ public class World {
 	}
 	
 	public Color color(int x, int y, int z){
-		Creature creature = creature(x, y, z);
+		CreatureInterface creature = creature(x, y, z);
 		if (creature != null)
 			return creature.color();
 		
@@ -88,12 +88,12 @@ public class World {
 	
 	public void update(){
 		List<Creature> toUpdate = new ArrayList<Creature>(creatures);
-		for (Creature creature : toUpdate){
+		for (CreatureInterface creature : toUpdate){
 			creature.update();
 		}
 	}
 
-	public void remove(Creature other) {
+	public void remove(CreatureInterface other) {
 		creatures.remove(other);
 	}
 	
@@ -149,7 +149,7 @@ public class World {
 				
 			if (items[p.x][p.y][p.z] == null){
 				items[p.x][p.y][p.z] = item;
-				Creature c = this.creature(p.x, p.y, p.z);
+				CreatureInterface c = this.creature(p.x, p.y, p.z);
 				if (c != null)
 					c.notify("A %s lands between your feet.", c.nameOf(item));
 				return true;
