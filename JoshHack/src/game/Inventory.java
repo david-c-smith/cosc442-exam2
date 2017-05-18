@@ -6,7 +6,7 @@ public class Inventory {
 	public Item[] getItems() { return items; }
 	public Item get(int i) { return items[i]; }
 	
-	public Inventory(int max){
+	Inventory(int max){
 		items = new Item[max];
 	}
 	

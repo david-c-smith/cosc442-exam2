@@ -3,9 +3,9 @@ package ui;
 import game.Creature;
 import game.Item;
 
-public class QuaffScreen extends InventoryBasedScreen {
+class QuaffScreen extends InventoryBasedScreen {
 
-	public QuaffScreen(Creature player) {
+	QuaffScreen(Creature player) {
 		super(player);
 	}
 

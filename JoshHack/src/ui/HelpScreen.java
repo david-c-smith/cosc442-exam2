@@ -3,6 +3,7 @@ package ui;
 import java.awt.event.KeyEvent;
 import asciiPanel.AsciiPanel;
 
+@SuppressWarnings("ucd")
 public class HelpScreen implements Screen {
 
 	@Override

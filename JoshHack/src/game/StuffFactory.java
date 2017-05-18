@@ -197,7 +197,7 @@ public class StuffFactory {
 		return item;
 	}
 	
-	public Item newPotionOfMana(int depth){
+	private Item newPotionOfMana(int depth){
 		String appearance = potionAppearances.get(1);
 		final Item item = new Item('!', potionColors.get(appearance), "mana potion", appearance);
 		item.setQuaffEffect(new Effect(1){
@@ -214,7 +214,7 @@ public class StuffFactory {
 		return item;
 	}
 	
-	public Item newPotionOfSlowHealth(int depth){
+	private Item newPotionOfSlowHealth(int depth){
 		String appearance = potionAppearances.get(2);
 		final Item item = new Item('!', potionColors.get(appearance), "slow health potion", appearance);
 		item.setQuaffEffect(new Effect(100){

@@ -3,7 +3,7 @@ package ui;
 import game.Creature;
 import game.Spell;
 
-public class CastSpellScreen extends TargetBasedScreen {
+class CastSpellScreen extends TargetBasedScreen {
 	private Spell spell;
 	
 	public CastSpellScreen(Creature player, String caption, int sx, int sy, Spell spell) {

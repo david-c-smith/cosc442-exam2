@@ -1,10 +1,10 @@
 package game;
 
-public class FungusAi extends CreatureAi {
+class FungusAi extends CreatureAi {
 	private StuffFactory factory;
 	private int spreadcount;
 	
-	public FungusAi(Creature creature, StuffFactory factory) {
+	FungusAi(Creature creature, StuffFactory factory) {
 		super(creature);
 		this.factory = factory;
 	}
