@@ -237,7 +237,7 @@ public class Creature implements CreatureInterface {
 		this.food = maxFood / 3 * 2;
 		this.level = 1;
 		this.regenHpPer1000 = 10;
-		this.effects = new ArrayList<Effect>();
+		this.effects = new ArrayList<>();
 		this.maxMana = 5;
 		this.mana = maxMana;
 		this.regenManaPer1000 = 20;
@@ -385,7 +385,7 @@ public class Creature implements CreatureInterface {
 	}
 	
 	private void updateEffects(){
-		List<Effect> done = new ArrayList<Effect>();
+		List<Effect> done = new ArrayList<>();
 		
 		for (Effect effect : effects){
 			effect.update(this);
@@ -469,7 +469,7 @@ public class Creature implements CreatureInterface {
 	}
 	
 	private List<Creature> getCreaturesWhoSeeMe(){
-		List<Creature> others = new ArrayList<Creature>();
+		List<Creature> others = new ArrayList<>();
 		int r = 9;
 		for (int ox = -r; ox < r+1; ox++){
 			for (int oy = -r; oy < r+1; oy++){
@@ -712,19 +712,19 @@ public class Creature implements CreatureInterface {
 	 * @see game.CreatureInterface#throwItem(game.Item, int, int, int)
 	 */
 	@Override
-	public void throwItem(Item item, int wx, int wy, int wz) {
+	public void throwItem(Item item, int wx1, int wy1, int wz) {
 		Point end = new Point(x, y, 0);
 		
-		for (Point p : new Line(x, y, wx, wy)){
+		for (Point p : new Line(x, y, wx1, wy1)){
 			if (!realTile(p.x, p.y, z).isGround())
 				break;
 			end = p;
 		}
 		
-		wx = end.x;
-		wy = end.y;
+		wx1 = end.x;
+		wy1 = end.y;
 		
-		Creature c = creature(wx, wy, wz);
+		Creature c = creature(wx1, wy1, wz);
 		
 		if (c != null)
 			throwAttack(item, c);				
@@ -734,7 +734,7 @@ public class Creature implements CreatureInterface {
 		if (item.quaffEffect() != null && c != null)
 			getRidOf(item);
 		else
-			putAt(item, wx, wy, wz);
+			putAt(item, wx1, wy1, wz);
 	}
 	
 	/* (non-Javadoc)
